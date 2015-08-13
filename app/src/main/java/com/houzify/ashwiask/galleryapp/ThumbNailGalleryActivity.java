@@ -33,8 +33,6 @@ public class ThumbNailGalleryActivity extends GalleryBaseActivity {
 
         mImageAdapter = new ImageAdapter(this, mImageBitmapList);
 
-//        resizeBitmapList();
-
         gvImages.setAdapter(mImageAdapter);
 
         gvImages.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -50,14 +48,7 @@ public class ThumbNailGalleryActivity extends GalleryBaseActivity {
 
     }
 
-//    public void resizeBitmapList() {
-//        for (Bitmap bitmap : mImageBitmapList) {
-//            Bitmap resizeBitmap = Bitmap.createScaledBitmap(bitmap, (int) (bitmap.getWidth() * .4), (int) (bitmap.getHeight() * .4), true);
-//            mImageResizeBitMapList.add(resizeBitmap);
-//
-//
-//        }
-//    }
+
 
 
 }
