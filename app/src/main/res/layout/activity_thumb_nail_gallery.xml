@@ -1,19 +1,32 @@
-<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/gridViewImages"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:columnWidth="100dp"
-    android:horizontalSpacing="10dp"
-    android:numColumns="auto_fit"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:stretchMode="columnWidth"
-    android:verticalSpacing="10dp"
-    android:gravity="center"
-    tools:context=".ThumbNailGalleryActivity">
+    android:orientation="vertical">
 
 
-</GridView>
+    <Button
+        android:id="@+id/fetch_image_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fetch_images" />
+
+    <GridView
+        android:id="@+id/gridViewImages"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:columnWidth="100dp"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:numColumns="auto_fit"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp"
+        android:visibility="gone"
+        tools:context=".ThumbNailGalleryActivity" />
+
+
+</LinearLayout>

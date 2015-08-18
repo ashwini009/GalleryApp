@@ -2,4 +2,9 @@
     <string name="app_name">GalleryApp</string>
 
     <string name="action_settings">Settings</string>
+    <string name="fetch_images">Fetch Images</string>
+    <string name="no_internet_connection">This application requires internet connection. Please connect with the internet to view the images.</string>
+    <string name="fetching_data">Fetching data from Flickr. Please wait&#8230;</string>
+    <string name="fetching_url">Fetching URL for images. Please wait&#8230;</string>
+    <string name="downloading_image">Downloading images. Please wait&#8230;</string>
 </resources>

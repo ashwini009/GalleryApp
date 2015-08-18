@@ -20,21 +20,23 @@ public class GalleryBaseActivity extends AppCompatActivity {
     /**
      * Images stored in drawable folder - Right now, 20 images are taken into consideration
      */
-
-    private static final Integer[] mImageArrays = {R.drawable.abstract_image_1, R.drawable.abstract_image_2, R.drawable.abstract_image_3,
-            R.drawable.abstract_image_4, R.drawable.abstract_image_5, R.drawable.abstract_image_6,
-            R.drawable.abstract_image_7, R.drawable.abstract_image_8, R.drawable.abstract_image_9, R.drawable.abstract_image_10,
-            R.drawable.abstract_image_11, R.drawable.abstract_image_12, R.drawable.abstract_image_13, R.drawable.abstract_image_14,
-            R.drawable.abstract_image_15, R.drawable.abstract_image_16, R.drawable.abstract_image_17, R.drawable.abstract_image_18,
-            R.drawable.abstract_image_19, R.drawable.abstract_image_20, R.drawable.abstract_image_21, R.drawable.abstract_image_22,
-            R.drawable.abstract_image_23, R.drawable.abstract_image_24, R.drawable.abstract_image_25, R.drawable.abstract_image_26,
-            R.drawable.abstract_image_27, R.drawable.abstract_image_28, R.drawable.abstract_image_29, R.drawable.abstract_image_30};
+//
+//    private static final Integer[] mImageArrays = {R.drawable.abstract_image_1, R.drawable.abstract_image_2, R.drawable.abstract_image_3,
+//            R.drawable.abstract_image_4, R.drawable.abstract_image_5, R.drawable.abstract_image_6,
+//            R.drawable.abstract_image_7, R.drawable.abstract_image_8, R.drawable.abstract_image_9, R.drawable.abstract_image_10,
+//            R.drawable.abstract_image_11, R.drawable.abstract_image_12, R.drawable.abstract_image_13, R.drawable.abstract_image_14,
+//            R.drawable.abstract_image_15, R.drawable.abstract_image_16, R.drawable.abstract_image_17, R.drawable.abstract_image_18,
+//            R.drawable.abstract_image_19, R.drawable.abstract_image_20, R.drawable.abstract_image_21, R.drawable.abstract_image_22,
+//            R.drawable.abstract_image_23, R.drawable.abstract_image_24, R.drawable.abstract_image_25, R.drawable.abstract_image_26,
+//            R.drawable.abstract_image_27, R.drawable.abstract_image_28, R.drawable.abstract_image_29, R.drawable.abstract_image_30};
 
     /**
      * List of Bit map of all the images
      */
 
-    protected ArrayList<Bitmap> mImageBitmapList = new ArrayList<>(20);
+    protected ArrayList<Bitmap> mImageBitmapList = new ArrayList<>();
+
+    protected ArrayList<Bitmap>mDecodedBitmapList = new ArrayList<>();
 
 
     @Override
@@ -42,7 +44,7 @@ public class GalleryBaseActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
 
-        populateBitmapArray();
+        //populateBitmapArray();
     }
 
     @Override
@@ -71,11 +73,13 @@ public class GalleryBaseActivity extends AppCompatActivity {
      * Convert image to bit map and populate into bitmap list
      */
     public void populateBitmapArray() {
-        for (int i = 0; i < mImageArrays.length; i++) {
-            Bitmap abstractImageBitmap = decodeSampledBitmapFromResource(this.getResources(), mImageArrays[i], 150, 150);
-            mImageBitmapList.add(abstractImageBitmap);
+        for(Bitmap image: mImageBitmapList) {
+            Bitmap abstractImageBitmap = Bitmap.createScaledBitmap(image, 200, 200, true);
+            mDecodedBitmapList.add(abstractImageBitmap);
         }
     }
+
+
 
     public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
                                                          int reqWidth, int reqHeight) {

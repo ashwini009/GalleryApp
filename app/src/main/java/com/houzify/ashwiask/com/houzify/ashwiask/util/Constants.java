@@ -1,8 +1,8 @@
-package com.houzify.ashwiask.com.houzify.ashwiask.common;
+package com.houzify.ashwiask.com.houzify.ashwiask.util;
 
 /**
  * Created by ashwiask on 8/13/2015.
- *
+ * <p/>
  * Constant class to handle all the constants
  */
 public class Constants {

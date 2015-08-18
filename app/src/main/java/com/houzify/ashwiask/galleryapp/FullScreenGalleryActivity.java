@@ -1,11 +1,16 @@
 package com.houzify.ashwiask.galleryapp;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 
 import com.houzify.ashwiask.adaptor.FullScreenGalleryPagerAdapter;
-import com.houzify.ashwiask.com.houzify.ashwiask.common.Constants;
+import com.houzify.ashwiask.com.houzify.ashwiask.util.BitmapHelper;
+import com.houzify.ashwiask.com.houzify.ashwiask.util.Constants;
+
+import java.util.ArrayList;
 
 /**
  * Created by ashwiask on 8/12/2015.
@@ -33,7 +38,10 @@ public class FullScreenGalleryActivity extends GalleryBaseActivity {
 
         int imageClickedPos = intent.getIntExtra(Constants.IMAGE_CLICKED_POSITION_TAG, -1);
 
-        mPagerAdapter = new FullScreenGalleryPagerAdapter(this, mImageBitmapList);
+        ArrayList<Bitmap>imageList = BitmapHelper.getInstance().getImageList();
+
+        Log.d("Full Screen", "bitmap list size "+ imageList.size());
+        mPagerAdapter = new FullScreenGalleryPagerAdapter(this, imageList);
 
         mImageViewPager.setAdapter(mPagerAdapter);
 

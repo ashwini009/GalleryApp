@@ -59,6 +59,7 @@ public class FullScreenGalleryPagerAdapter extends PagerAdapter {
         ((ViewPager) container).addView(view);
 
         return view;
+
     }
 
     @Override
