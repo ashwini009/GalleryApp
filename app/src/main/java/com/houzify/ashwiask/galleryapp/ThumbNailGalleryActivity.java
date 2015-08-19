@@ -16,11 +16,11 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.houzify.ashwiask.adaptor.ImageAdapter;
-import com.houzify.ashwiask.com.houzify.ashwiask.util.BitmapHelper;
-import com.houzify.ashwiask.com.houzify.ashwiask.util.Constants;
-import com.houzify.ashwiask.com.houzify.ashwiask.util.ImageDownloaderTask;
-import com.houzify.ashwiask.com.houzify.ashwiask.util.ImageUrlFetcherTask;
-import com.houzify.ashwiask.com.houzify.ashwiask.util.RequestDataTask;
+import com.houzify.ashwiask.utils.BitmapHelper;
+import com.houzify.ashwiask.utils.Constants;
+import com.houzify.ashwiask.utils.ImageDownloaderTask;
+import com.houzify.ashwiask.utils.ImageUrlFetcherTask;
+import com.houzify.ashwiask.utils.RequestDataTask;
 import com.houzify.ashwiask.listeners.DataTaskListener;
 import com.houzify.ashwiask.listeners.DownloadImageListener;
 import com.houzify.ashwiask.listeners.URLImageListener;

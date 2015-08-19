@@ -1,4 +1,4 @@
-package com.houzify.ashwiask.com.houzify.ashwiask.util;
+package com.houzify.ashwiask.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;

@@ -1,4 +1,4 @@
-package com.houzify.ashwiask.com.houzify.ashwiask.util;
+package com.houzify.ashwiask.utils;
 
 /**
  * Created by ashwiask on 8/13/2015.

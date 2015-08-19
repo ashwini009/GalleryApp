@@ -7,8 +7,8 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 
 import com.houzify.ashwiask.adaptor.FullScreenGalleryPagerAdapter;
-import com.houzify.ashwiask.com.houzify.ashwiask.util.BitmapHelper;
-import com.houzify.ashwiask.com.houzify.ashwiask.util.Constants;
+import com.houzify.ashwiask.utils.BitmapHelper;
+import com.houzify.ashwiask.utils.Constants;
 
 import java.util.ArrayList;
 

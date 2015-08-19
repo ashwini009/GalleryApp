@@ -1,10 +1,12 @@
-package com.houzify.ashwiask.com.houzify.ashwiask.util;
+package com.houzify.ashwiask.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
-import com.houzify.ashwiask.listeners.URLImageListener;
+import com.houzify.ashwiask.galleryapp.R;
+import com.houzify.ashwiask.listeners.DataTaskListener;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -17,20 +19,26 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 
 /**
  * Created by ashwiask on 8/18/2015.
- * <p/>
- * This class fetches the image URL of every public photo using the photo ID fetched from RequestDataTask.
  */
-public class ImageUrlFetcherTask extends AsyncTask<String, Void, String> {
+public class RequestDataTask extends AsyncTask<String, Void, String> {
+    private Context mContext = null;
 
-    private URLImageListener imageUrlFetchListner = null;
+    private static final String TAG = RequestDataTask.class.getSimpleName();
 
-    private static final String TAG = ImageUrlFetcherTask.class.getSimpleName();
+    private ProgressDialog mProgressDialog = null;
 
-    public ImageUrlFetcherTask(URLImageListener imageListener, Context context) {
-        imageUrlFetchListner = imageListener;
+    private ArrayList<String> mPhotoIdList = new ArrayList<>();
+
+    private DataTaskListener mTaskListener = null;
+
+    public RequestDataTask(Context context, DataTaskListener listener) {
+        mContext = context;
+        mTaskListener = listener;
+        mProgressDialog = new ProgressDialog(context);
     }
 
     @Override
@@ -68,34 +76,40 @@ public class ImageUrlFetcherTask extends AsyncTask<String, Void, String> {
 
         }
         return builder.toString();
+
     }
 
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
 
+        mProgressDialog.setMessage(mContext.getString(R.string.fetching_data));
+        mProgressDialog.setIndeterminate(true);
+//        mProgressDialog.show();
     }
 
     @Override
     protected void onPostExecute(String result) {
         super.onPostExecute(result);
+        if (mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+
         try {
             JSONObject jsonObject = new JSONObject(result);
-            JSONObject photoSizesJson = jsonObject.getJSONObject("sizes");
-            JSONArray sizeJsonArray = photoSizesJson.getJSONArray("size");
-            for (int i = 0; i < sizeJsonArray.length(); i++) {
-                JSONObject size = sizeJsonArray.getJSONObject(i);
-                String label = size.getString("label");
-                if (label.equalsIgnoreCase("Original")) {
-                    String imageUrl = size.getString("source");
-                    imageUrlFetchListner.onImageUrlFetched(imageUrl);
-                }
+            JSONObject jsonPhotos = jsonObject.getJSONObject("photos");
+            JSONArray jsonArray = jsonPhotos.getJSONArray("photo");
+
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonPhoto = jsonArray.getJSONObject(i);
+                String photoId = jsonPhoto.getString("id");
+                mPhotoIdList.add(photoId);
 
             }
+            mTaskListener.onDataTaskComplete(mPhotoIdList);
+
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-
     }
 }
